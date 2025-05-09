@@ -18,11 +18,30 @@ public class Main {
 
         BankAccount account = new BankAccount("Giorgos", BigDecimal.TEN, false);
 
-
         System.out.println(account.withdraw(new BigDecimal("9.0")));
 
         System.out.println(account.getBalance());
 
+        /**
+         * Inheritance allows us to create a new class from an existing class.
+         * extends
+         */
+
+        String[] languages = {"Java", "Go", "JavaScript", "Python", "Typescript"};
+
+        Programmer java = new Programmer(
+                "Giorgos",
+                36,
+                "London",
+                "Full Stack",
+                languages
+        );
+
+//      java.writeSomeCode();
+//    System.out.println(java.getAddress());
+//    System.out.println(java.getName());
+
+        java.sayHi();
 
     }
 
