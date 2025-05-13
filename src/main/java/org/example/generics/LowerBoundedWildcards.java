@@ -3,7 +3,7 @@ package org.example.generics;
 import java.util.Arrays;
 import java.util.List;
 
-public class UpperBoundedWildcards {
+public class LowerBoundedWildcards {
 
     public static void main(String[] args) {
         // ? Wildcards
