@@ -15,20 +15,24 @@ public class CalculatorProject {
     final static byte PERCENT = 100;
 
     public static void main(String[] args) {
-
         int principal =  (int) readNumber("Principal ($1k - $1M): ", 1000, 1_000_000);
         float annualInterest =  (float) readNumber("Annual Interest Rate: ", 1, 30);
         byte years = (byte) readNumber("Period (Years): ", 1, 30);
 
-        double mortage = calculateMonthly(principal, annualInterest, years);
+        PrintMortgage(principal, annualInterest, years);
+        printPaymentSchedule(years, principal, annualInterest);
+    }
 
-        String mortgageFormatted = NumberFormat.getCurrencyInstance().format(mortage);
+    private static void PrintMortgage(int principal, float annualInterest, byte years) {
+        double mortgage = calculateMonthly(principal, annualInterest, years);
+        String mortgageFormatted = NumberFormat.getCurrencyInstance().format(mortgage);
         System.out.println();
         System.out.println("MORTGAGE");
         System.out.println("---------");
         System.out.println("Monthly Payments: " + mortgageFormatted);
+    }
 
-
+    private static void printPaymentSchedule(byte years, int principal, float annualInterest) {
         System.out.println();
         System.out.println("PAYMENT SCHEDULE");
         System.out.println("---------");
@@ -36,7 +40,6 @@ public class CalculatorProject {
             double balance = calculateBalance(principal, annualInterest, years, month);
             System.out.println(NumberFormat.getCurrencyInstance().format(balance));
         }
-
     }
 
     public static double readNumber(
