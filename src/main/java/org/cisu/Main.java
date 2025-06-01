@@ -2,8 +2,11 @@ package org.cisu;
 
 public class Main {
     public static void main(String[] args) {
-//        System.out.println("Hello, World!");
 
-        System.out.println("Hello World!");
+        int age = 30;
+        int myAge = age;
+        age = 35;
+
+        System.out.println(myAge);
     }
 }
