@@ -5,7 +5,8 @@ public class Strings {
 
     public static void main(String[] args) {
         //    String message = new String("Hello World");
-        String message = "Hello World" + "!!";
+
+        String message = "Hello \"World\"" + "!!";
 
         System.out.println(message.endsWith("!!"));
         System.out.println(message.startsWith("!!"));
