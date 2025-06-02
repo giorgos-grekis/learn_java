@@ -4,11 +4,16 @@ public class Employee {
     private int baseSalary;
     private int hourlyRate;
 
+    public Employee(int baseSalary, int hourlyRate) {
+        this.baseSalary = baseSalary;
+        this.hourlyRate = hourlyRate;
+    }
+
     private int getBaseSalary() {
         return baseSalary;
     }
 
-    public void setBaseSalary(int baseSalary) {
+    private void setBaseSalary(int baseSalary) {
         if (baseSalary <= 0)
             throw new IllegalArgumentException("baseSalary must be greater than zero");
         this.baseSalary = baseSalary;
