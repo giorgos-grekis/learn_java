@@ -1,41 +1,17 @@
 package org.cisu.calculator;
 
-import java.text.NumberFormat;
-
 public class CalculatorProject {
 
     final static byte MONTHS_IN_YEAR = 12;
     final static byte PERCENT = 100;
 
     public static void main(String[] args) {
-
-        Console.readNumber()
-
         int principal =  (int) Console.readNumber("Principal ($1k - $1M): ", 1000, 1_000_000);
         float annualInterest =  (float) Console.readNumber("Annual Interest Rate: ", 1, 30);
         byte years = (byte) Console.readNumber("Period (Years): ", 1, 30);
 
-        printMortgage(principal, annualInterest, years);
-        printPaymentSchedule(years, principal, annualInterest);
-    }
-
-    private static void printMortgage(int principal, float annualInterest, byte years) {
-        double mortgage = calculateMonthly(principal, annualInterest, years);
-        String mortgageFormatted = NumberFormat.getCurrencyInstance().format(mortgage);
-        System.out.println();
-        System.out.println("MORTGAGE");
-        System.out.println("---------");
-        System.out.println("Monthly Payments: " + mortgageFormatted);
-    }
-
-    private static void printPaymentSchedule(byte years, int principal, float annualInterest) {
-        System.out.println();
-        System.out.println("PAYMENT SCHEDULE");
-        System.out.println("---------");
-        for (short month = 1; month <= years * MONTHS_IN_YEAR; month++) {
-            double balance = calculateBalance(principal, annualInterest, years, month);
-            System.out.println(NumberFormat.getCurrencyInstance().format(balance));
-        }
+        MortagageReport.printMortgage(principal, annualInterest, years);
+        MortagageReport.printPaymentSchedule(years, principal, annualInterest);
     }
 
     public static double calculateBalance(
