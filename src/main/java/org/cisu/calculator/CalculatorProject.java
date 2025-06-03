@@ -2,9 +2,6 @@ package org.cisu.calculator;
 
 public class CalculatorProject {
 
-    final static byte MONTHS_IN_YEAR = 12;
-    final static byte PERCENT = 100;
-
     public static void main(String[] args) {
         int principal =  (int) Console.readNumber("Principal ($1k - $1M): ", 1000, 1_000_000);
         float annualInterest =  (float) Console.readNumber("Annual Interest Rate: ", 1, 30);
