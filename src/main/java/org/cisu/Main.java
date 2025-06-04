@@ -1,5 +1,9 @@
 package org.cisu;
 
+/**
+ *  YAGNI
+ *  You Aren't Gonna Need It
+ */
 
 public class Main {
 
