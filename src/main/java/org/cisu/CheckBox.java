@@ -1,7 +1,6 @@
 package org.cisu;
 
-public class CheckBox extends UIControl {
-
+public final class CheckBox extends UIControl {
 
     public CheckBox(boolean isEnabled) {
         super(isEnabled);
@@ -11,4 +10,8 @@ public class CheckBox extends UIControl {
     public void render() {
         System.out.println("Render CheckBox");
     }
+
+
+
+//    public class MyCheckBox extends String {}
 }
