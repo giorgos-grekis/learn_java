@@ -14,24 +14,30 @@ public class Main {
 //
 //        System.out.println(box1.equals(box2));
 
-        var control = new UIControl(true);
-        var textBox = new TextBox();
-        show(control);
+//        var control = new UIControl(true);
+//        var textBox = new TextBox();
+//        show(control);
+//
+//        var point1 = new Point(1,2);
+//        var point2 = new Point(1,2);
+//
+//        System.out.println(point1 == point2);
+//        System.out.println(point1.equals(point1));
+//        System.out.println(point1.hashCode());
+//        System.out.println(point2.hashCode());
 
-        var point1 = new Point(1,2);
-        var point2 = new Point(1,2);
 
-        System.out.println(point1 == point2);
-        System.out.println(point1.equals(point1));
-        System.out.println(point1.hashCode());
-        System.out.println(point2.hashCode());
+        UIControl[] controls = {new TextBox(), new TextBox(), new TextBox()};
+        for (var control : controls) {
+            control.enable();
+        }
     }
 
-     public static void show(UIControl control) {
-        if (control instanceof TextBox) {
-            var textBox = (TextBox) control;
-            textBox.setText("Hello World");
-        }
-         System.out.println(control);
-     }
+//     public static void show(UIControl control) {
+//        if (control instanceof TextBox) {
+//            var textBox = (TextBox) control;
+//            textBox.setText("Hello World");
+//        }
+//         System.out.println(control);
+//     }
 }
