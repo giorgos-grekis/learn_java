@@ -15,12 +15,16 @@ public class Account {
 
 
     public void withdraw(float value) throws AccountException {
+//        if (value > balance) {
+//            var fundsException = new InsufficientFundsException();
+//            var accountException = new AccountException();
+//            accountException.initCause(fundsException);
+//            throw accountException;
+////            throw new InsufficientFundsException();
+//        }
+
         if (value > balance) {
-            var fundsException = new InsufficientFundsException();
-            var accountException = new AccountException(new InsufficientFundsException());
-            accountException.initCause(fundsException);
-            throw accountException;
-//            throw new InsufficientFundsException();
+            System.out.println("You can't withdraw less than balance");
         }
     }
 
