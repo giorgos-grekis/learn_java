@@ -34,8 +34,11 @@ public class Main {
 //        UIControl[] controls = {new TextBox(), new TextBox(), new TextBox()};
 //        for (var control : controls) {
 //            control.enable();
-//        }
+//
 
+        // poor mans dependencies injection
+        var calculator = new TaxCalculator2018(100_000);
+        var report = new TaxReport(calculator);
 
     }
 
