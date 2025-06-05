@@ -50,19 +50,22 @@ public class ExceptionsDemo {
 //        }
 
 
-        // try-with-resources // add a final bloack and automatically close the reader
-        // reader.close();
-        try (
-                var reader = new FileReader("file.txt");
-                var writer = new FileWriter("file.txt");
-        ) {
-            var value = reader.read();
-            reader.close();
-            new SimpleDateFormat().parse("");
-        }
-        catch (IOException | ParseException e) {
-            System.out.println(e.getMessage());
-        }
+//        //   // add a final bloack and automatically close the reader
+//        // reader.close();
+//        try (
+//                var reader = new FileReader("file.txt");
+//                var writer = new FileWriter("file.txt");
+//        ) {
+//            var value = reader.read();
+//            reader.close();
+//            new SimpleDateFormat().parse("");
+//        }
+//        catch (IOException | ParseException e) {
+//            System.out.println(e.getMessage());
+//        }
+//
+        var account = new Account();
+        account.deposit(1);
 
     }
 
