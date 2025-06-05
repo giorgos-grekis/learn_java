@@ -60,12 +60,18 @@ public class ExceptionsDemo {
 //        }
 //
         var account = new Account();
+//        try {
+//            account.deposit(-1);
+//        } catch (IOException e) {
+////            throw new RuntimeException(e);
+//            System.out.println("Logging");
+//            throw e;
+//        }
+////
         try {
-            account.deposit(-1);
-        } catch (IOException e) {
-//            throw new RuntimeException(e);
-            System.out.println("Logging");
-            throw e;
+            account.withdraw(10);
+        } catch (InsufficientFundsException e) {
+            System.out.println(e.getMessage());
         }
 
     }
