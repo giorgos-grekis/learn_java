@@ -22,9 +22,11 @@ import java.text.SimpleDateFormat;
 
 public class ExceptionsDemo {
     public static void show() {
+        FileReader reader = null;
         try {
-            var reader = new FileReader("file.txt");
+            reader = new FileReader("file.txt");
             var value = reader.read();
+            reader.close();
             new SimpleDateFormat().parse("");
         }
 //        catch (FileNotFoundException e) {
@@ -36,6 +38,15 @@ public class ExceptionsDemo {
 //        catch (ParseException e) {
 //            throw new RuntimeException(e);
 //        }
+        finally {
+            if (reader != null) {
+                try {
+                    reader.close();
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                }
+            }
+        }
 
     }
 
