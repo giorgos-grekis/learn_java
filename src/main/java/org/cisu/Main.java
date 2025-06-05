@@ -38,11 +38,18 @@ public class Main {
 
         // poor mans dependencies injection
         var calculator = new TaxCalculator2018(100_000);
-        var report = new TaxReport(calculator);
-        report.show();
+//        var report = new TaxReport(calculator);
+//        report.show();
+//
+//        report.setCalculator(new TaxCalculator2018(0));
+//        report.show();
 
-        report.setCalculator(new TaxCalculator2018(0));
-        report.show();
+        // Method Injection
+        var report = new TaxReport();
+        report.show(calculator);
+
+        report.show(new TaxCalculator2018(0));
+
 
     }
 
