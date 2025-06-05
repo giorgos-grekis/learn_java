@@ -7,6 +7,8 @@ public interface TaxCalculator {
 
     double calculateTax();
 
-
+    static double getTaxableIncome(double income, double expense) {
+        return income - expense;
+    }
 
 }
