@@ -1,10 +1,10 @@
 package org.cisu;
 
 public class TaxReport {
-    private TaxCalculator calculator;
+    private TaxCalculator2018 calculator;
 
     public TaxReport() {
-        calculator = new TaxCalculator(100_000);
+        calculator = new TaxCalculator2018(100_000);
     }
 
     public void show() {

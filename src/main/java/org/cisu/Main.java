@@ -31,10 +31,12 @@ public class Main {
 //        System.out.println(point2.hashCode());
 
 
-        UIControl[] controls = {new TextBox(), new TextBox(), new TextBox()};
-        for (var control : controls) {
-            control.enable();
-        }
+//        UIControl[] controls = {new TextBox(), new TextBox(), new TextBox()};
+//        for (var control : controls) {
+//            control.enable();
+//        }
+
+
     }
 
 //     public static void show(UIControl control) {
