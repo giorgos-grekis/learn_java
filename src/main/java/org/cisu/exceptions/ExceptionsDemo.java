@@ -2,6 +2,9 @@ package org.cisu.exceptions;
 
 import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.io.IOException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 
 /**
  * Three Types of Exceptions
@@ -21,16 +24,17 @@ public class ExceptionsDemo {
     public static void show() {
         try {
             var reader = new FileReader("file.txt");
-        } catch (FileNotFoundException e) {
-            throw new RuntimeException(e);
+            var value = reader.read();
+            new SimpleDateFormat().parse("");
         }
-
-
-//        try {
-//            var reader = new FileReader("file.txt");
-//            System.out.println("File opened");
-//        } catch (FileNotFoundException ex) {
-//            System.out.println(ex.getMessage());
+//        catch (FileNotFoundException e) {
+//            throw new RuntimeException(e);
+//        }
+        catch (IOException | ParseException e) {
+            System.out.println(e.getMessage());
+        }
+//        catch (ParseException e) {
+//            throw new RuntimeException(e);
 //        }
 
     }
