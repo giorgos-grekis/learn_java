@@ -2,6 +2,7 @@ package org.cisu.exceptions;
 
 import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -22,30 +23,45 @@ import java.text.SimpleDateFormat;
 
 public class ExceptionsDemo {
     public static void show() {
-        FileReader reader = null;
-        try {
-            reader = new FileReader("file.txt");
+//        FileReader reader = null;
+//        try {
+//            reader = new FileReader("file.txt");
+//            var value = reader.read();
+//            reader.close();
+//            new SimpleDateFormat().parse("");
+//        }
+////        catch (FileNotFoundException e) {
+////            throw new RuntimeException(e);
+////        }
+//        catch (IOException | ParseException e) {
+//            System.out.println(e.getMessage());
+//        }
+////        catch (ParseException e) {
+////            throw new RuntimeException(e);
+////        }
+//        finally {
+//            if (reader != null) {
+//                try {
+//                    reader.close();
+//                } catch (IOException e) {
+//                    throw new RuntimeException(e);
+//                }
+//            }
+//        }
+
+
+        // try-with-resources // add a final bloack and automatically close the reader
+        // reader.close();
+        try (
+                var reader = new FileReader("file.txt");
+                var writer = new FileWriter("file.txt");
+        ) {
             var value = reader.read();
             reader.close();
             new SimpleDateFormat().parse("");
         }
-//        catch (FileNotFoundException e) {
-//            throw new RuntimeException(e);
-//        }
         catch (IOException | ParseException e) {
             System.out.println(e.getMessage());
-        }
-//        catch (ParseException e) {
-//            throw new RuntimeException(e);
-//        }
-        finally {
-            if (reader != null) {
-                try {
-                    reader.close();
-                } catch (IOException e) {
-                    throw new RuntimeException(e);
-                }
-            }
         }
 
     }
