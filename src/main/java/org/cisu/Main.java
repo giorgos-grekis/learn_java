@@ -5,6 +5,16 @@ package org.cisu;
  *  You Aren't Gonna Need It
  */
 
+/**
+ *     Interfaces (Contracts)
+ *     To build loosely-coupled
+ *     extensible, testable applications
+ *     -----------------------------------
+ *     Abstract Classes (Partially-completed Classes)
+ *     To share code
+ *
+ */
+
 public class Main {
 
     public static void main(String[] args) {
