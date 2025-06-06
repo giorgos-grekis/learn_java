@@ -3,6 +3,7 @@ package org.cisu;
 import org.cisu.generics.GenericList;
 import org.cisu.generics.List;
 import org.cisu.generics.User;
+import org.cisu.generics.Utils;
 
 public class Main {
 
@@ -32,6 +33,13 @@ public class Main {
             System.out.println("user1 == user2");
         else
             System.out.println("user1 > user2");
+
+        var max = Utils.max(1, 3);
+        System.out.printf("max: %d\n", max);
+
+        var maxuser = Utils.max(user1, user2);
+        System.out.println("maxUser: " + maxuser);
+
 
 
     }
