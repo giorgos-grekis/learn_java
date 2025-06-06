@@ -45,7 +45,7 @@ public class ExceptionsDemo {
 //        }
 
 
-//        //   // add a final bloack and automatically close the reader
+//        //   // add a final block and automatically close the reader
 //        // reader.close();
 //        try (
 //                var reader = new FileReader("file.txt");
@@ -68,11 +68,11 @@ public class ExceptionsDemo {
 //            throw e;
 //        }
 ////
-        try {
-            account.withdraw(10);
-        } catch (InsufficientFundsException e) {
-            System.out.println(e.getMessage());
-        }
+//        try {
+//            account.withdraw(10);
+//        } catch (InsufficientFundsException e) {
+//            System.out.println(e.getMessage());
+//        }
 
     }
 
