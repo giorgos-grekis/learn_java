@@ -1,4 +1,4 @@
 package org.cisu.generics;
 
-public class User implements Comparable {
+public class User {
 }

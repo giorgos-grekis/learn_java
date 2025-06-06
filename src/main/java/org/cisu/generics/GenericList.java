@@ -3,7 +3,7 @@ package org.cisu.generics;
 // T => Type
 // E => Element
 
-public class GenericList<T extends Comparable & Cloneable> {
+public class GenericList<T extends Number> {
     private T[] items = (T[]) new Object[10];
     private int count;
 

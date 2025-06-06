@@ -22,7 +22,7 @@ public class Main {
 //        numbers.add(1); // Boxing
 //        int number = numbers.get(0); // Unboxing
 
-            new GenericList<User>();
+            new GenericList<Integer>();
 
 
     }
