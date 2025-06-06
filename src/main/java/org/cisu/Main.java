@@ -41,6 +41,9 @@ public class Main {
         System.out.println("maxUser: " + maxuser);
 
 
+        Utils.print(1, "cisu");
+
+
 
     }
 
