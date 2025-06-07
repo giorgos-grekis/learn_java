@@ -3,8 +3,8 @@ package org.cisu.lambdas;
 public interface Printer {
     void print(String message);
 
-    default void printTwice(String message) {
-        System.out.println(message);
-        System.out.println(message);
-    }
+//    default void printTwice(String message) {
+//        System.out.println(message);
+//        System.out.println(message);
+//    }
 }
