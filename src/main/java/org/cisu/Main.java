@@ -59,6 +59,8 @@ public class Main {
         // Iterables
         var list = new GenericList<String>();
         var iterator = list.iterator();
+        list.add("a");
+        list.add("b");
 
         while (iterator.hasNext()) {
             var current = iterator.next();
