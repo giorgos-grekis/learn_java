@@ -1,6 +1,8 @@
 package org.cisu;
 
+import org.cisu.collections.CollectionsDemo;
 import org.cisu.generics.*;
+import org.cisu.lambdas.LambdasDemo;
 
 /**
  *          Iterable
@@ -56,22 +58,24 @@ public class Main {
 //        var users = new GenericList<User>();
 //        Utils.printUsers(users);
 
-        // Iterables
-        var list = new GenericList<String>();
-        var iterator = list.iterator();
-        list.add("a");
-        list.add("b");
+//        // Iterables
+//        var list = new GenericList<String>();
+//        var iterator = list.iterator();
+//        list.add("a");
+//        list.add("b");
+//
+//        while (iterator.hasNext()) {
+//            var current = iterator.next();
+//            System.out.println(current);
+//        }
+//
+//        for (var item : list)
+//            System.out.println(item);
 
-        while (iterator.hasNext()) {
-            var current = iterator.next();
-            System.out.println(current);
-        }
+//        // CollectionsDemo
+//         CollectionsDemo.show();
 
-        for (var item : list)
-            System.out.println(item);
-
-
-
+        LambdasDemo.show();
     }
 
 }
