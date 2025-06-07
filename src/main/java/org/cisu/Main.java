@@ -1,9 +1,15 @@
 package org.cisu;
 
-import org.cisu.generics.GenericList;
-import org.cisu.generics.List;
-import org.cisu.generics.User;
-import org.cisu.generics.Utils;
+import org.cisu.generics.*;
+
+/**
+ *          Iterable
+ *          Collections
+ *  List        Queue           Set
+ *  ArrayList   PriorityQueue   HashSet
+ *  LinkedList
+ *
+ */
 
 public class Main {
 
@@ -24,24 +30,43 @@ public class Main {
 //        int number = numbers.get(0); // Unboxing
 
 
-        var user1 = new User(10);
-        var user2 = new User(20);
+//        var user1 = new User(10);
+//        var user2 = new User(20);
+//
+//        if (user1.compareTo(user2) < 0)
+//            System.out.println("user1 < user2");
+//        else if (user1.compareTo(user2) == 0)
+//            System.out.println("user1 == user2");
+//        else
+//            System.out.println("user1 > user2");
+//
+//        var max = Utils.max(1, 3);
+//        System.out.printf("max: %d\n", max);
+//
+//        var maxuser = Utils.max(user1, user2);
+//        System.out.println("maxUser: " + maxuser);
+//
+//
+//        Utils.print(1, "cisu");
+//
+//        User user = new Instructor(10);
+//        Utils.printUser(user);
 
-        if (user1.compareTo(user2) < 0)
-            System.out.println("user1 < user2");
-        else if (user1.compareTo(user2) == 0)
-            System.out.println("user1 == user2");
-        else
-            System.out.println("user1 > user2");
+//        var instructors = new GenericList<Instructor>();
+//        var users = new GenericList<User>();
+//        Utils.printUsers(users);
 
-        var max = Utils.max(1, 3);
-        System.out.printf("max: %d\n", max);
+        // Iterables
+        var list = new GenericList<String>();
+        var iterator = list.iterator();
 
-        var maxuser = Utils.max(user1, user2);
-        System.out.println("maxUser: " + maxuser);
+        while (iterator.hasNext()) {
+            var current = iterator.next();
+            System.out.println(current);
+        }
 
-
-        Utils.print(1, "cisu");
+        for (var item : list)
+            System.out.println(item);
 
 
 

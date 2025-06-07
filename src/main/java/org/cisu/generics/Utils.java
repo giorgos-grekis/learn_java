@@ -1,6 +1,8 @@
 package org.cisu.generics;
 
 
+import java.util.Map;
+
 public class Utils  {
     public static <T extends Comparable<T>> T max(T first, T second) {
 //        return first > second ? first : second;
@@ -9,6 +11,14 @@ public class Utils  {
 
     public static <K, V> void print(K key, V value) {
         System.out.println("key: " + key + " value: " + value);
+    }
+
+    public static void printUser(User user) {
+        System.out.println(user);
+    }
+
+    public static void printUsers(GenericList<?> user) {
+
     }
 
 }

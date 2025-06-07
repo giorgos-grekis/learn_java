@@ -3,8 +3,10 @@ package org.cisu.generics;
 // T => Type
 // E => Element
 
-public class GenericList<T extends Number> {
-    private T[] items = (T[]) new Object[10];
+import java.util.Iterator;
+
+public class GenericList<T> implements Iterable<T> {
+    public T[] items = (T[]) new Object[10];
     private int count;
 
     public void add(T item) {
@@ -13,5 +15,22 @@ public class GenericList<T extends Number> {
 
     public T get(int index) {
         return (T) items[index];
+    }
+
+    @Override
+    public Iterator<T> iterator() {
+        return new Iterator<T>() {
+            private int index = 0;
+
+            @Override
+            public boolean hasNext() {
+                return index < count;
+            }
+
+            @Override
+            public T next() {
+                return items[index++];
+            }
+        };
     }
 }
