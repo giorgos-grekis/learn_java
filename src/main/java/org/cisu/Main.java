@@ -75,7 +75,8 @@ public class Main {
 //        // CollectionsDemo
 //         CollectionsDemo.show();
 
-        LambdasDemo.show();
+        var demo = new LambdasDemo();
+        demo.show();
     }
 
 }
