@@ -1,30 +1,55 @@
 package org.cisu.concurrency;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class ThreadDemo {
     public static void show() {
 
-        System.out.println(Thread.currentThread().getName());
+        // Race Conditions
+        var status = new DownloadStatus();
 
-//        for (var i = 0; i < 10; i++) {
-            Thread thread = new Thread(new DownloadFileTask());
+        List<Thread> threads = new ArrayList<Thread>();
+
+        for (var i = 0; i < 10; i++) {
+            var thread = new Thread(new DownloadFileTask(status));
             thread.start();
-
-        try {
-            Thread.sleep(1000);
-        } catch (InterruptedException e) {
-            throw new RuntimeException(e);
+            threads.add(thread);
         }
 
-        thread.interrupt();
+        for (var thread : threads) {
+            try {
+                thread.join();
+            } catch (InterruptedException e) {
+                throw new RuntimeException(e);
+            }
+        }
 
-//            try {
-//                thread.join();
-//            } catch (InterruptedException e) {
-//                throw new RuntimeException(e);
-//            }
+        System.out.println(status.getTotalBytes());
+
+
+//        System.out.println(Thread.currentThread().getName());
 //
-//            System.out.println("File is ready to be scanned.");
+////        for (var i = 0; i < 10; i++) {
+//            Thread thread = new Thread(new DownloadFileTask());
+//            thread.start();
+//
+//        try {
+//            Thread.sleep(1000);
+//        } catch (InterruptedException e) {
+//            throw new RuntimeException(e);
 //        }
+//
+//        thread.interrupt();
+//
+////            try {
+////                thread.join();
+////            } catch (InterruptedException e) {
+////                throw new RuntimeException(e);
+////            }
+////
+////            System.out.println("File is ready to be scanned.");
+////        }
 
     }
 }
