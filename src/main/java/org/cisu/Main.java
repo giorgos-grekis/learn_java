@@ -3,6 +3,7 @@ package org.cisu;
 import org.cisu.collections.CollectionsDemo;
 import org.cisu.generics.*;
 import org.cisu.lambdas.LambdasDemo;
+import org.cisu.streams.StreamsDemo;
 
 /**
  *          Iterable
@@ -78,6 +79,7 @@ public class Main {
 //        var demo = new LambdasDemo();
 //        demo.show();
 
+        StreamsDemo.show();
 
     }
 
