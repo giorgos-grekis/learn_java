@@ -16,11 +16,20 @@ public class StreamsDemo {
             new Movie("c", 20)
         );
 
-        // distinct => Getting Unique Elements
+        // Peeking Elements
         movies.stream()
-                .map(Movie::getLikes)
-                .distinct()
+                .filter(m -> m.getLikes() > 10)
+                .peek(m -> System.out.println("filtered : " + m.getTitle()))
+                .map(Movie::getTitle)
+                .peek(t -> System.out.println("mapped : " + t))
                 .forEach(System.out::println);
+
+
+//        // distinct => Getting Unique Elements
+//        movies.stream()
+//                .map(Movie::getLikes)
+//                .distinct()
+//                .forEach(System.out::println);
 
 
 //        // Sorting Streams
