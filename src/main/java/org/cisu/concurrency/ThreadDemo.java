@@ -9,13 +9,21 @@ public class ThreadDemo {
             Thread thread = new Thread(new DownloadFileTask());
             thread.start();
 
-            try {
-                thread.join();
-            } catch (InterruptedException e) {
-                throw new RuntimeException(e);
-            }
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
 
-            System.out.println("File is ready to be scanned.");
+        thread.interrupt();
+
+//            try {
+//                thread.join();
+//            } catch (InterruptedException e) {
+//                throw new RuntimeException(e);
+//            }
+//
+//            System.out.println("File is ready to be scanned.");
 //        }
 
     }
