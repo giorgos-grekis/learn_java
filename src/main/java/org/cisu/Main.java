@@ -2,6 +2,7 @@ package org.cisu;
 
 import org.cisu.collections.CollectionsDemo;
 import org.cisu.concurrency.ThreadDemo;
+import org.cisu.executors.ExecutorsDemo;
 import org.cisu.generics.*;
 import org.cisu.lambdas.LambdasDemo;
 import org.cisu.streams.StreamsDemo;
@@ -85,7 +86,9 @@ public class Main {
 //        System.out.println(Thread.activeCount());
 //        System.out.println(Runtime.getRuntime().availableProcessors());
 
-        ThreadDemo.show();
+//        ThreadDemo.show();
+
+        ExecutorsDemo.show();
 
     }
 
