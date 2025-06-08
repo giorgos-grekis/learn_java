@@ -10,13 +10,21 @@ public class LambdasDemo {
 
     public void show() {
 
-        // The BinaryOperator Interface
-        //a,b -> a + b -> square
-        BinaryOperator<Integer> add = (a, b) -> a + b;
-        Function<Integer, Integer> square = (a) -> a * a;
+        // The UnaryOperator Interface
+        UnaryOperator<Integer> square = x -> x * x;
+        UnaryOperator<Integer> increment = x -> x + 1;
 
-        var result = add.andThen(square).apply(1,2);
+        var result = increment.andThen(square).apply(1);
         System.out.println(result);
+
+
+//        // The BinaryOperator Interface
+//        //a,b -> a + b -> square
+//        BinaryOperator<Integer> add = (a, b) -> a + b;
+//        Function<Integer, Integer> square = (a) -> a * a;
+//
+//        var result = add.andThen(square).apply(1,2);
+//        System.out.println(result);
 
 
 //        // Combining Predicate
