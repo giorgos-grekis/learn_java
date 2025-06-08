@@ -77,6 +77,8 @@ public class Main {
 
         var demo = new LambdasDemo();
         demo.show();
+
+
     }
 
 }

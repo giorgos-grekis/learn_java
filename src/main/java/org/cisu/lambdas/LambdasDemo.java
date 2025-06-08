@@ -1,20 +1,29 @@
 package org.cisu.lambdas;
 
+
+import java.util.List;
+import java.util.function.Consumer;
+
 public class LambdasDemo {
     public  String prefix = "-";
 
     public void show() {
-        // Lambda Expressions
-        greet(message -> System.out.println(this.prefix + message));
 
+        // Chaining Consumer
 
-        // Method References
-        // Class/Object::method
-        greet(this::print);
+        List<String> list = List.of("a", "b", "c");
+//        Consumer<String> print = (String item) -> System.out.println(item);
+        Consumer<String> print = System.out::println;
+        Consumer<String> printUpperCase = item -> System.out.println(item.toUpperCase());
+        list.forEach(print.andThen(printUpperCase).andThen(print));
+
+//        // Lambda Expressions
+//        greet(message -> System.out.println(this.prefix + message));
+//
+//        // Method References
+//        // Class/Object::method
+//        greet(this::print);
 //        greet(LambdasDemo::print); // if it's static
-
-
-
 
 //      // functional Interfaces
 //        greet(new Printer() {
