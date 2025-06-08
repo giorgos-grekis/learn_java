@@ -16,13 +16,22 @@ public class StreamsDemo {
             new Movie("c", 20)
         );
 
-        // Peeking Elements
-        movies.stream()
-                .filter(m -> m.getLikes() > 10)
-                .peek(m -> System.out.println("filtered : " + m.getTitle()))
-                .map(Movie::getTitle)
-                .peek(t -> System.out.println("mapped : " + t))
-                .forEach(System.out::println);
+//        // Simple Reduces
+//        movies.stream()
+////                .anyMatch(m -> m.getLikes() > 20)
+////                .allMatch(movie -> movie.getLikes() == 10);
+////                .noneMatch(movie -> movie.getTitle().equals("a"));
+////                .findFirst()
+
+
+
+//        // Peeking Elements
+//        movies.stream()
+//                .filter(m -> m.getLikes() > 10)
+//                .peek(m -> System.out.println("filtered : " + m.getTitle()))
+//                .map(Movie::getTitle)
+//                .peek(t -> System.out.println("mapped : " + t))
+//                .forEach(System.out::println);
 
 
 //        // distinct => Getting Unique Elements
