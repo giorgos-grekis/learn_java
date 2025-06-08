@@ -1,9 +1,6 @@
 package org.cisu.streams;
 
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.Comparator;
-import java.util.List;
+import java.util.*;
 import java.util.stream.Stream;
 
 public class StreamsDemo {
@@ -15,6 +12,13 @@ public class StreamsDemo {
             new Movie("b", 15),
             new Movie("c", 20)
         );
+
+        // Reducing a Stream
+        Optional<Integer> sum = movies.stream()
+                .map(m -> m.getLikes())
+                .reduce((a,b) -> a + b);
+
+        System.out.println(sum.orElse(10));
 
 //        // Simple Reduces
 //        movies.stream()
