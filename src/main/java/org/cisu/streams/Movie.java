@@ -1,5 +1,7 @@
 package org.cisu.streams;
 
+import java.io.Serializable;
+
 public class Movie {
     private String title;
     private int likes;
@@ -16,4 +18,5 @@ public class Movie {
     public String getTitle() {
         return title;
     }
+
 }

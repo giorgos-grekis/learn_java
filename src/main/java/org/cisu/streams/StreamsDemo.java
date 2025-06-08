@@ -2,6 +2,7 @@ package org.cisu.streams;
 
 import java.util.Arrays;
 import java.util.Collection;
+import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Stream;
 
@@ -14,19 +15,24 @@ public class StreamsDemo {
             new Movie("c", 20)
         );
 
-
-        // Slicing Streams
-        // 1000 moives
-        // 10 movies per page
-        // 3rd page
-        // skip(20) = skip ( (page -1) x pageSize )
-        // limit(10) = limit(pageSize)
+        // Sorting Streams
         movies.stream()
-                .takeWhile(movie -> movie.getLikes() < 30)
-                .dropWhile(movie -> movie.getLikes() < 30)
-                .skip(2)
-                .limit(10)
-                .forEach(m -> System.out.println(m.getTitle()));
+//                .sorted((a,b) -> a.getTitle().compareTo(b.getTitle()))
+                .sorted(Comparator.comparing(Movie::getTitle))
+                .forEach(m-> System.out.println(m.getTitle()));
+
+//        // Slicing Streams
+//        // 1000 moives
+//        // 10 movies per page
+//        // 3rd page
+//        // skip(20) = skip ( (page -1) x pageSize )
+//        // limit(10) = limit(pageSize)
+//        movies.stream()
+//                .takeWhile(movie -> movie.getLikes() < 30)
+//                .dropWhile(movie -> movie.getLikes() < 30)
+//                .skip(2)
+//                .limit(10)
+//                .forEach(m -> System.out.println(m.getTitle()));
 
 //        // Filtering Element
 //
