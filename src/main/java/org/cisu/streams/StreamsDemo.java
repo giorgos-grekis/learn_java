@@ -6,19 +6,19 @@ import java.util.stream.Stream;
 public class StreamsDemo {
 
     public static void show() {
-        List<Movie> movies = List.of(
-            new Movie("a", 10),
-            new Movie("a", 10),
-            new Movie("b", 15),
-            new Movie("c", 20)
-        );
-
-        // Reducing a Stream
-        Optional<Integer> sum = movies.stream()
-                .map(m -> m.getLikes())
-                .reduce((a,b) -> a + b);
-
-        System.out.println(sum.orElse(10));
+//        List<Movie> movies = List.of(
+//            new Movie("a", 10),
+//            new Movie("a", 10),
+//            new Movie("b", 15),
+//            new Movie("c", 20)
+//        );
+//
+//        // Reducing a Stream
+//        Optional<Integer> sum = movies.stream()
+//                .map(m -> m.getLikes())
+//                .reduce((a,b) -> a + b);
+//
+//        System.out.println(sum.orElse(10));
 
 //        // Simple Reduces
 //        movies.stream()
