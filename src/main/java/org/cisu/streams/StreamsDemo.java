@@ -9,12 +9,28 @@ public class StreamsDemo {
 
     public static void show() {
 
-        // Creating a Stream
-        Stream.generate(() -> "Hello").limit(10).forEach(System.out::println);
+        // Mapping Elements
+        List<Movie> movies = List.of(
+            new Movie("a", 10),
+            new Movie("b", 15),
+            new Movie("c", 20)
+        );
 
-        int[] numbers = {1, 2, 3};
-        Arrays.stream(numbers)
-                .forEach(n -> System.out.println(n));
+        movies.stream()
+                .map(Movie::getTitle)
+                .forEach(System.out::println);
+
+        var stream = Stream.of(List.of(1, 2, 3), List.of(4,5,6));
+        stream
+                .flatMap(Collection::stream)
+                .forEach(System.out::println);
+
+//        // Creating a Stream
+//        Stream.generate(() -> "Hello").limit(10).forEach(System.out::println);
+//
+//        int[] numbers = {1, 2, 3};
+//        Arrays.stream(numbers)
+//                .forEach(n -> System.out.println(n));
 
 
 //        List<Movie> movies = List.of(
