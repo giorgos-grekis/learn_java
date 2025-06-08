@@ -3,6 +3,7 @@ package org.cisu;
 import org.cisu.collections.CollectionsDemo;
 import org.cisu.concurrency.ThreadDemo;
 import org.cisu.executors.ExecutorsDemo;
+import org.cisu.executors.MailService;
 import org.cisu.generics.*;
 import org.cisu.lambdas.LambdasDemo;
 import org.cisu.streams.StreamsDemo;
@@ -88,7 +89,15 @@ public class Main {
 
 //        ThreadDemo.show();
 
-        ExecutorsDemo.show();
+//        ExecutorsDemo.show();
+        var service = new MailService();
+        service.sendAsync();
+        System.out.println("Hello world ");
+        try {
+            Thread.sleep(5000);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
 
     }
 
