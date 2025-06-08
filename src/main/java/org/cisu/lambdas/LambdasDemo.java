@@ -12,10 +12,21 @@ public class LambdasDemo {
 
     public void show() {
 
-        // The predicate Interface
-        Predicate<String> isLongerThan5 = str -> str.length()> 5;
-        var result = isLongerThan5.test("sky");
+        // Combining Predicate
+        Predicate<String> hasLeftBrace = str -> str.startsWith("{");
+        Predicate<String> hasRightBrace = str -> str.endsWith("{");
+
+        Predicate<String> hasLeftAndRightBraces = hasLeftBrace.and(hasRightBrace);
+        var result = hasLeftAndRightBraces.test("{key:value}");
         System.out.println(result);
+
+
+
+
+//        // The predicate Interface
+//        Predicate<String> isLongerThan5 = str -> str.length()> 5;
+//        var result = isLongerThan5.test("sky");
+//        System.out.println(result);
 
 //        // Composing Function
 //        Function<String, String> replaceColon =
