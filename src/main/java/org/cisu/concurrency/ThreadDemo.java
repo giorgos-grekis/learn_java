@@ -5,14 +5,14 @@ import java.util.List;
 
 public class ThreadDemo {
     public static void show() {
-
-        // Race Conditions
-        var status = new DownloadStatus();
-
         List<Thread> threads = new ArrayList<Thread>();
+        List<DownloadFileTask> tasks = new ArrayList<>();
 
         for (var i = 0; i < 10; i++) {
-            var thread = new Thread(new DownloadFileTask(status));
+            var task = new DownloadFileTask();
+            tasks.add(task);
+
+            var thread = new Thread(task);
             thread.start();
             threads.add(thread);
         }
@@ -25,7 +25,13 @@ public class ThreadDemo {
             }
         }
 
-        System.out.println(status.getTotalBytes());
+        var totalBytes = tasks.stream()
+                        .map(t -> t.getStatus().getTotalBytes())
+//                .reduce(0, (a,b) -> a + b);
+                .reduce(0, Integer::sum);
+
+
+        System.out.println(totalBytes);
 
 
 //        System.out.println(Thread.currentThread().getName());
