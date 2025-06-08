@@ -11,10 +11,26 @@ public class LambdasDemo {
 
     public void show() {
 
-        // The Function Interface
-        Function<String, Integer> map = str -> str.length();
-        var length = map.apply("Sky");
-        System.out.println(length);
+        // Composing Function
+        Function<String, String> replaceColon =
+                str -> str.replaceAll(":", "=");
+        Function<String, String> addBraces = str -> "{" + str + "}";
+
+        // Declarative Programming
+        var result = replaceColon
+                .andThen(addBraces)
+                .apply("key:value");
+
+        var result2 = addBraces.compose(replaceColon).apply("key:value");
+
+        System.out.println(result);
+        System.out.println(result2);
+
+
+//        // The Function Interface
+//        Function<String, Integer> map = str -> str.length();
+//        var length = map.apply("Sky");
+//        System.out.println(length);
 
 //        // The Supplier Interface
 //        Supplier<Double> getRandom = Math::random;
