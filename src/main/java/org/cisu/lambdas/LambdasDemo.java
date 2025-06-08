@@ -4,6 +4,7 @@ package org.cisu.lambdas;
 import java.util.List;
 import java.util.function.Consumer;
 import java.util.function.Function;
+import java.util.function.Predicate;
 import java.util.function.Supplier;
 
 public class LambdasDemo {
@@ -11,20 +12,25 @@ public class LambdasDemo {
 
     public void show() {
 
-        // Composing Function
-        Function<String, String> replaceColon =
-                str -> str.replaceAll(":", "=");
-        Function<String, String> addBraces = str -> "{" + str + "}";
-
-        // Declarative Programming
-        var result = replaceColon
-                .andThen(addBraces)
-                .apply("key:value");
-
-        var result2 = addBraces.compose(replaceColon).apply("key:value");
-
+        // The predicate Interface
+        Predicate<String> isLongerThan5 = str -> str.length()> 5;
+        var result = isLongerThan5.test("sky");
         System.out.println(result);
-        System.out.println(result2);
+
+//        // Composing Function
+//        Function<String, String> replaceColon =
+//                str -> str.replaceAll(":", "=");
+//        Function<String, String> addBraces = str -> "{" + str + "}";
+//
+//        // Declarative Programming
+//        var result = replaceColon
+//                .andThen(addBraces)
+//                .apply("key:value");
+//
+//        var result2 = addBraces.compose(replaceColon).apply("key:value");
+//
+//        System.out.println(result);
+//        System.out.println(result2);
 
 
 //        // The Function Interface
