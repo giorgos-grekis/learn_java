@@ -1,26 +1,31 @@
 package org.cisu.lambdas;
 
 
+import javax.naming.BinaryRefAddr;
 import java.util.List;
-import java.util.function.Consumer;
-import java.util.function.Function;
-import java.util.function.Predicate;
-import java.util.function.Supplier;
+import java.util.function.*;
 
 public class LambdasDemo {
     public  String prefix = "-";
 
     public void show() {
 
-        // Combining Predicate
-        Predicate<String> hasLeftBrace = str -> str.startsWith("{");
-        Predicate<String> hasRightBrace = str -> str.endsWith("{");
+        // The BinaryOperator Interface
+        //a,b -> a + b -> square
+        BinaryOperator<Integer> add = (a, b) -> a + b;
+        Function<Integer, Integer> square = (a) -> a * a;
 
-        Predicate<String> hasLeftAndRightBraces = hasLeftBrace.and(hasRightBrace);
-        var result = hasLeftAndRightBraces.test("{key:value}");
+        var result = add.andThen(square).apply(1,2);
         System.out.println(result);
 
 
+//        // Combining Predicate
+//        Predicate<String> hasLeftBrace = str -> str.startsWith("{");
+//        Predicate<String> hasRightBrace = str -> str.endsWith("{");
+//
+//        Predicate<String> hasLeftAndRightBraces = hasLeftBrace.and(hasRightBrace);
+//        var result = hasLeftAndRightBraces.test("{key:value}");
+//        System.out.println(result);
 
 
 //        // The predicate Interface
