@@ -3,6 +3,7 @@ package org.cisu.lambdas;
 
 import java.util.List;
 import java.util.function.Consumer;
+import java.util.function.Function;
 import java.util.function.Supplier;
 
 public class LambdasDemo {
@@ -10,10 +11,15 @@ public class LambdasDemo {
 
     public void show() {
 
-        // The Supplier Interface
-        Supplier<Double> getRandom = Math::random;
-        var random = getRandom.get();
-        System.out.println(random);
+        // The Function Interface
+        Function<String, Integer> map = str -> str.length();
+        var length = map.apply("Sky");
+        System.out.println(length);
+
+//        // The Supplier Interface
+//        Supplier<Double> getRandom = Math::random;
+//        var random = getRandom.get();
+//        System.out.println(random);
 
 //        // Chaining Consumer
 //        List<String> list = List.of("a", "b", "c");
