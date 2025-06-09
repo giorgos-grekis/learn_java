@@ -18,15 +18,30 @@ public class CompletableFutureDemo {
 
     public static void show() {
 
-        // Composing Completable Future
-//        CompletableFuture.supplyAsync(() -> "email")
-//            .thenCompose(email -> CompletableFuture
-//            .supplyAsync(() -> "playlist"))
-//            .thenAccept(playlist -> System.out.println(playlist));
+        // Combining Completable future
+        var first = CompletableFuture
+                .supplyAsync(() -> "20USD")
+                .thenApply(str -> {
+                   var price = str.replace("USD", "");
+                   return Integer.parseInt(price);
+                });
 
-        getUserEmailAsync()
-            .thenCompose(CompletableFutureDemo::getPlayListAsync)
-            .thenAccept(playlist -> System.out.println(playlist));
+        var second = CompletableFuture.supplyAsync(() -> 0.9);
+
+        first
+            .thenCombine(second, (price, exchangeRate) -> price * exchangeRate)
+            .thenAccept(result -> System.out.println(result));
+
+
+//        // Composing Completable Future
+////        CompletableFuture.supplyAsync(() -> "email")
+////            .thenCompose(email -> CompletableFuture
+////            .supplyAsync(() -> "playlist"))
+////            .thenAccept(playlist -> System.out.println(playlist));
+//
+//        getUserEmailAsync()
+//            .thenCompose(CompletableFutureDemo::getPlayListAsync)
+//            .thenAccept(playlist -> System.out.println(playlist));
 
 
 
