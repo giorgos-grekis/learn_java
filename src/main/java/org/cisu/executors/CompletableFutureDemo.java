@@ -1,10 +1,9 @@
 package org.cisu.executors;
 
-import java.util.List;
+import java.time.Duration;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
 import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.ExecutionException;
-import java.util.concurrent.TimeUnit;
-import java.util.stream.Collectors;
 
 public class CompletableFutureDemo {
 
@@ -23,11 +22,20 @@ public class CompletableFutureDemo {
     public static void show() {
 
         // project find best price
-        var service = new FightService();
-         service.getQuotes()
+        var start = LocalTime.now();
+
+        var service = new FlightService();
+         var futures =  service.getQuotes()
                  .map(future -> future.thenAccept(System.out::println))
                 .toList();
 
+         CompletableFuture
+                 .allOf(futures.toArray(new CompletableFuture[0]))
+                 .thenRun(() -> {
+                     var end = LocalTime.now();
+                     var duration = Duration.between(start, end);
+                     System.out.println("Retrieved all quotes in " + duration.toMillis() + "ms");
+                 });
 
         try {
             Thread.sleep(10_000);
