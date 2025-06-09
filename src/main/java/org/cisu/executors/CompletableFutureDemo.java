@@ -19,23 +19,36 @@ public class CompletableFutureDemo {
 
     public static void show() {
 
-        // Waiting for Many Tasks
-        var first = CompletableFuture.supplyAsync(() -> 1);
-        var second = CompletableFuture.supplyAsync(() -> 2);
-        var third = CompletableFuture.supplyAsync(() -> 3);
-
-        var all = CompletableFuture.allOf(first, second, third);
-
-        all.thenRun(() -> {
-            try {
-                var firstResult = first.get();
-                System.out.println(firstResult);
-            } catch (InterruptedException | ExecutionException e) {
-                throw new RuntimeException(e);
-            }
-
-            System.out.println("All Done!");
+        // waiting for the first task
+        var first = CompletableFuture.supplyAsync(() -> {
+            LongTask.simulate();
+            return 20;
         });
+
+        var second = CompletableFuture.supplyAsync(() -> 20);
+
+        var fastest = CompletableFuture
+                .anyOf(first, second)
+                .thenAccept(temp -> System.out.println(temp));
+
+
+//        // Waiting for Many Tasks
+//        var first = CompletableFuture.supplyAsync(() -> 1);
+//        var second = CompletableFuture.supplyAsync(() -> 2);
+//        var third = CompletableFuture.supplyAsync(() -> 3);
+//
+//        var all = CompletableFuture.allOf(first, second, third);
+//
+//        all.thenRun(() -> {
+//            try {
+//                var firstResult = first.get();
+//                System.out.println(firstResult);
+//            } catch (InterruptedException | ExecutionException e) {
+//                throw new RuntimeException(e);
+//            }
+//
+//            System.out.println("All Done!");
+//        });
 
 //        // Combining Completable future
 //        var first = CompletableFuture
