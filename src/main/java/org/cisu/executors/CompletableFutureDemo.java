@@ -1,8 +1,10 @@
 package org.cisu.executors;
 
+import java.util.List;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.TimeUnit;
+import java.util.stream.Collectors;
 
 public class CompletableFutureDemo {
 
@@ -20,20 +22,34 @@ public class CompletableFutureDemo {
 
     public static void show() {
 
-        // Handling timeouts
-        var future = CompletableFuture.supplyAsync(() -> {
-            LongTask.simulate();
-            return 1;
-        });
+        // project find best price
+        var service = new FightService();
+         service.getQuotes()
+                 .map(future -> future.thenAccept(System.out::println))
+                .toList();
+
 
         try {
-            var result = future
-                    .completeOnTimeout(1,1, TimeUnit.SECONDS)
-                    .get();
-            System.out.println(result);
-        } catch (InterruptedException | ExecutionException e) {
+            Thread.sleep(10_000);
+        } catch (InterruptedException e) {
             throw new RuntimeException(e);
         }
+
+
+//        // Handling timeouts
+//        var future = CompletableFuture.supplyAsync(() -> {
+//            LongTask.simulate();
+//            return 1;
+//        });
+//
+//        try {
+//            var result = future
+//                    .completeOnTimeout(1,1, TimeUnit.SECONDS)
+//                    .get();
+//            System.out.println(result);
+//        } catch (InterruptedException | ExecutionException e) {
+//            throw new RuntimeException(e);
+//        }
 
 //        // waiting for the first task
 //        var first = CompletableFuture.supplyAsync(() -> {
