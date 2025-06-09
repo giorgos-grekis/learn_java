@@ -1,6 +1,7 @@
 package org.cisu.executors;
 
 import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.ExecutionException;
 
 public class CompletableFutureDemo {
 
@@ -18,19 +19,37 @@ public class CompletableFutureDemo {
 
     public static void show() {
 
-        // Combining Completable future
-        var first = CompletableFuture
-                .supplyAsync(() -> "20USD")
-                .thenApply(str -> {
-                   var price = str.replace("USD", "");
-                   return Integer.parseInt(price);
-                });
+        // Waiting for Many Tasks
+        var first = CompletableFuture.supplyAsync(() -> 1);
+        var second = CompletableFuture.supplyAsync(() -> 2);
+        var third = CompletableFuture.supplyAsync(() -> 3);
 
-        var second = CompletableFuture.supplyAsync(() -> 0.9);
+        var all = CompletableFuture.allOf(first, second, third);
 
-        first
-            .thenCombine(second, (price, exchangeRate) -> price * exchangeRate)
-            .thenAccept(result -> System.out.println(result));
+        all.thenRun(() -> {
+            try {
+                var firstResult = first.get();
+                System.out.println(firstResult);
+            } catch (InterruptedException | ExecutionException e) {
+                throw new RuntimeException(e);
+            }
+
+            System.out.println("All Done!");
+        });
+
+//        // Combining Completable future
+//        var first = CompletableFuture
+//                .supplyAsync(() -> "20USD")
+//                .thenApply(str -> {
+//                   var price = str.replace("USD", "");
+//                   return Integer.parseInt(price);
+//                });
+//
+//        var second = CompletableFuture.supplyAsync(() -> 0.9);
+//
+//        first
+//            .thenCombine(second, (price, exchangeRate) -> price * exchangeRate)
+//            .thenAccept(result -> System.out.println(result));
 
 
 //        // Composing Completable Future
