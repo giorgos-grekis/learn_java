@@ -8,17 +8,33 @@ import java.util.function.Supplier;
 
 public class CompletableFutureDemo {
     public static void show() {
-        // Running Code on Completion
-        var future = CompletableFuture.supplyAsync(() -> 1);
-        CompletionStage x;
-//        future.thenRunAsync(() -> {
-//            System.out.println(Thread.currentThread().getName());
-//            System.out.println("Done");
-//        });
-        future.thenAcceptAsync(result -> {
-            System.out.println(Thread.currentThread().getName());
-            System.out.println(result);
+
+        // Handling Exceptions
+        var future = CompletableFuture.supplyAsync(() -> {
+            System.out.println("Getting the current weather");
+            throw new IllegalStateException();
         });
+
+        try {
+            var temperature = future.exceptionally(ex -> 1).get();
+            System.out.println(temperature);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        } catch (ExecutionException e) {
+            throw new RuntimeException(e);
+        }
+
+//        // Running Code on Completion
+//        var future = CompletableFuture.supplyAsync(() -> 1);
+//        CompletionStage x;
+////        future.thenRunAsync(() -> {
+////            System.out.println(Thread.currentThread().getName());
+////            System.out.println("Done");
+////        });
+//        future.thenAcceptAsync(result -> {
+//            System.out.println(Thread.currentThread().getName());
+//            System.out.println(result);
+//        });
 
 
 ////        ForkJoinPool.commonPool()
