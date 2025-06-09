@@ -1,10 +1,6 @@
 package org.cisu.executors;
 
 import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.CompletionStage;
-import java.util.concurrent.ExecutionException;
-import java.util.concurrent.ForkJoinPool;
-import java.util.function.Supplier;
 
 public class CompletableFutureDemo {
 
@@ -12,13 +8,33 @@ public class CompletableFutureDemo {
         return (int) (celsius * 1.8) + 32;
     }
 
+    public static CompletableFuture<String> getUserEmailAsync() {
+        return CompletableFuture.supplyAsync(() -> "email");
+    }
+
+    public static CompletableFuture<String> getPlayListAsync(String email) {
+        return CompletableFuture.supplyAsync(() -> "playlist ");
+    }
+
     public static void show() {
 
-        // Transforming a Completable future
-        var future = CompletableFuture.supplyAsync(() -> 20);
-        future
-                .thenApply(CompletableFutureDemo::toFahrenheit)
-                .thenAccept(System.out::println);
+        // Composing Completable Future
+//        CompletableFuture.supplyAsync(() -> "email")
+//            .thenCompose(email -> CompletableFuture
+//            .supplyAsync(() -> "playlist"))
+//            .thenAccept(playlist -> System.out.println(playlist));
+
+        getUserEmailAsync()
+            .thenCompose(CompletableFutureDemo::getPlayListAsync)
+            .thenAccept(playlist -> System.out.println(playlist));
+
+
+
+//        // Transforming a Completable future
+//        var future = CompletableFuture.supplyAsync(() -> 20);
+//        future
+//                .thenApply(CompletableFutureDemo::toFahrenheit)
+//                .thenAccept(System.out::println);
 
 //        // Handling Exceptions
 //        var future = CompletableFuture.supplyAsync(() -> {
