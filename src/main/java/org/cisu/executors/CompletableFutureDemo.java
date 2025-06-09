@@ -2,6 +2,7 @@ package org.cisu.executors;
 
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.ExecutionException;
+import java.util.concurrent.TimeUnit;
 
 public class CompletableFutureDemo {
 
@@ -19,17 +20,32 @@ public class CompletableFutureDemo {
 
     public static void show() {
 
-        // waiting for the first task
-        var first = CompletableFuture.supplyAsync(() -> {
+        // Handling timeouts
+        var future = CompletableFuture.supplyAsync(() -> {
             LongTask.simulate();
-            return 20;
+            return 1;
         });
 
-        var second = CompletableFuture.supplyAsync(() -> 20);
+        try {
+            var result = future
+                    .completeOnTimeout(1,1, TimeUnit.SECONDS)
+                    .get();
+            System.out.println(result);
+        } catch (InterruptedException | ExecutionException e) {
+            throw new RuntimeException(e);
+        }
 
-        var fastest = CompletableFuture
-                .anyOf(first, second)
-                .thenAccept(temp -> System.out.println(temp));
+//        // waiting for the first task
+//        var first = CompletableFuture.supplyAsync(() -> {
+//            LongTask.simulate();
+//            return 20;
+//        });
+//
+//        var second = CompletableFuture.supplyAsync(() -> 20);
+//
+//        var fastest = CompletableFuture
+//                .anyOf(first, second)
+//                .thenAccept(temp -> System.out.println(temp));
 
 
 //        // Waiting for Many Tasks
